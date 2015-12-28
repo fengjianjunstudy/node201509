@@ -9,7 +9,17 @@ newSay('我爱你');
 newSay('i love you');
 
 function eat(times,callback){
+	var i=1;
+	return function(){
+		console.log(i);
+		if(i=== times){
+			callback();
+			newEat=null;
+		}else{
+			i++;
 
+		}
+	}
 }
 var newEat = eat(5,function(){
     console.log('吃完了');
