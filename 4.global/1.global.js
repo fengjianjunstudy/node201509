@@ -6,7 +6,7 @@ process.on('uncaughtException',function(e){
  * module 当前模块对象
  * exports 导出对象
  * require 加载模块的方法
- * __dirname当前模块所在的目录的绝对路径
+ * __dirname  当前模块所在的目录的绝对路径
  * __filename 当前模块的绝对路径
  */
 //function x(module,exports,require,__dirname,__filename){
@@ -33,14 +33,20 @@ process.on('uncaughtException',function(e){
 //console.log(a);
 console.log();
 process.stdout.write('hello');
-console.log(process.pid);
-
+console.log(process.pid,"dd");
+process.stdin.resume()
 process.stdin.on('data',function(data){
- console.log(data.toString());
+    if(data){
+        console.log(data.toString());
+    }else{
+        process.exit(0)
+    }
+
 });
 
 process.on('exit',function(){
     console.log('退出前执行');
+    console.log(process.exitCode)
 });
 
 try{

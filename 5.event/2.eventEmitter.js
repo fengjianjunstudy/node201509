@@ -9,6 +9,7 @@ function Bell(name){
 }
 util.inherits(Bell,EventEmitter);
 var jingleBell = new Bell('jingle');
+console.log(jingleBell.defaultMaxListeners)
 jingleBell.on('ring',function(){
     console.log('收到礼物1');
 });
@@ -27,3 +28,5 @@ jingleBell.emit('drop','鹿');
 jingleBell.emit('drop','老人');
 
 console.log(jingleBell.listeners('ring'));
+jingleBell.setMaxListeners(10)
+console.log(jingleBell.defaultMaxListeners)

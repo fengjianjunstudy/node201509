@@ -34,7 +34,7 @@ console.log(buf);*/
 var newStr = str.slice(1);
 var newBuff = buf.slice(1);
 newBuff[1] = 5;
-console.log(buf);
+console.log(buf,"dd");
 
 var buf = new Buffer(12);
 buf.write("珠峰",0,6);

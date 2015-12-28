@@ -2,7 +2,7 @@ var fs = require('fs');
 
 /**
  * 异步的方式把字符串写入文件
- * read r write w execute
+ * read r write w execute x
  * 读      写       可执行
  * 二爷(写)一直(执行)死(4)读书
  * 4        2       1
@@ -36,10 +36,18 @@ console.log(buf);
 //e7 8f a0
 
 function base64(str){
-
+    var buf=new Buffer(str);
+    var arrB=[];
+    var result;
+    for(var i=0;i<buf.length;i++){
+        arrB.push(parseInt(buf[i],"16").toString("2"))
+    }
+    result=arrB.join("")
+    console.log(result)
     return result;
 }
-
+var guoguo="果果"
+base64(guoguo);
 console.log(parseInt("e7",16));
 console.log(parseInt("8f",16));
 console.log(parseInt("a0",16));

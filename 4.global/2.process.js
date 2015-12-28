@@ -1,5 +1,5 @@
 process.argv.forEach(function(val,index,array){
     console.log(val,index,array);
 });
-
-process.kill(1860);
+var pid=process.pid;
+process.kill(pid);

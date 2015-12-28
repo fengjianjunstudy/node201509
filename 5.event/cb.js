@@ -1,7 +1,8 @@
-
+var util=require("util")
 function Person(){
     this.name = 'zfpx';
-    return {name:'zf'}
+    //return {name:'zf'}
+    console.log(this)
 }
 /**
  * 1.创建空对象

@@ -3,6 +3,19 @@
  *
  **/
 var util = require('util');
+var obj = { name: 'nate' };
+obj.inspect = function(depth) {
+    return '{' + this.name + '}';
+};
+
+util.inspect(obj);
+
+var obj = { foo: 'this will not show up in the inspect() output' };
+obj.inspect = function(depth) {
+    return { bar: 'baz' };
+};
+
+util.inspect(obj);
 function Parent(){
     this.name = 'Parent';
     this.age = 6;
@@ -26,8 +39,7 @@ var child = new Child();
 //console.log();
 child.showName();
 // Object Parent Child
-console.log(child.__proto__.__proto__.__proto__ == Object.prototype
-);
+console.log(child.__proto__.__proto__.__proto__ == Object.prototype);
 function Person(){
     this.name = 'zfpx';
     this.parent = {
@@ -45,7 +57,7 @@ p.toString();
  * depth 对象的递归显示深度
  * colors 是否显示 颜色
  */
-console.log(util.inspect(p,true,1,true));
+console.log(util.inspect(p,false,1,true));
 
 var arr1 = [1,2];
 var arr2 = [3,4];
@@ -59,5 +71,10 @@ console.log(arr1);
 console.log(util.isArray([]));
 console.log(util.isDate([]));
 console.log(util.isRegExp([]));
+
+util.log('Timestamped message.');
+console.log(util.format('%s:%s', 'foo',"bar"));
+console.log(util.format('%j:%d', {foo:"123"},"bar"));
+//console.log(util.inspect(util, { showHidden: true, depth: null,colors:true }));
 
 

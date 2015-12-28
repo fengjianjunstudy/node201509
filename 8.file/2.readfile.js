@@ -15,14 +15,15 @@ var fs = require('fs');
 /**
  * path 文件的路径
  * options
- *  encoding  文件的编码
- *  flag
+ * encoding  文件的编码
+ * flag
  */
 var data = fs.readFileSync('index.txt',{encoding:'utf8',flag:'r'});
 
-fs.readFile('index1.txt',{encoding:'utf8',flag:'w'},function(err,data){
+fs.readFile('index1.txt',{encoding:'utf8',flag:'r'},function(err,data){
     if(err)
       console.error(err);
+    console.log(data)
 });
 
 

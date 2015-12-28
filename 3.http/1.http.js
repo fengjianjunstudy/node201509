@@ -8,7 +8,7 @@ var fs = require('fs');
 function serve(request,response){
   //请求的方法
   console.log(request.method,request.url);//请求里的url址
-  //console.log(request.headers);//获取请求头
+  console.log(request.headers);//获取请求头
 
   response.statusCode = 200;//设置状态码
     //设置响应的类型，编码为utf-8
