@@ -14,7 +14,6 @@ function parseHeader(callback){
       var bufArr=[];
     while(null != (chunk = rs.read())){
       var str = decoder.write(chunk);
-        console.log(str.toString(),"ff")
         if(str.match(/\r\n\r\n/)){
             var split = str.split(/\r\n\r\n/);
             headers += split.shift();
