@@ -11,6 +11,7 @@ function parseHeader(callback){
   rs.on('readable',onReadable);
   function onReadable(){
     var chunk;
+      var bufArr=[];
     while(null != (chunk = rs.read())){
       var str = decoder.write(chunk);
         if(str.match(/\r\n\r\n/)){
@@ -19,18 +20,24 @@ function parseHeader(callback){
             rs.removeListener('readable',onReadable);
             var left = split.join('\r\n\r\n');
             var buf = new Buffer(left);
-            if(buf.length)
+            bufArr.push(buf)
+            /*if(buf.length)
               rs.unshift(buf);
-            return callback(headers);
+            callback(headers);*/
         }else{
             headers+=str;
         }
     }
+      var buf1=Buffer.concat(bufArr);
+      if(buf1.length)
+          rs.unshift(buf);
+      callback(headers);
   }
 }
 
 parseHeader(function(headers){
     rs.setEncoding('utf8');
+    var i=0;
     rs.on('data',function(data){
         console.log(data);
     });

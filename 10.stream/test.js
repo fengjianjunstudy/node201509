@@ -1,0 +1,3 @@
+var arr=[0x61,0x67,0x65,0x3d,0x36]
+var buf=new Buffer(arr)
+console.log(buf.toString())
