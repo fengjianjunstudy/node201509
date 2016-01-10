@@ -22,7 +22,15 @@ app.use(function(req,res,next){
 app.use(bodyParser.json());
 //querystring  false
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(function(req,res,next){
+    var contentType = req.headers['content-type'];
+    //......
+    req.body = {name:'zfpx',age:6};
+    //-------------
+    req.fields = {name:'zfpx',age:6};
+    req.files = {avatar:{originalName:'gigi.jpg',path:'./upload/gigi.jpg'}};
+    next();
+});
 app.post('/post',function(req,res){
     res.send(req.body);
 });
