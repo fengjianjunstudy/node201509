@@ -10,8 +10,8 @@ function parseHeader(callback){
     var headers = '';
   rs.on('readable',onReadable);
   function onReadable(){
-    var chunk;
-      var bufArr=[];
+    var chunk,
+        bufArr=[];
     while(null != (chunk = rs.read())){
       var str = decoder.write(chunk);
         if(str.match(/\r\n\r\n/)){

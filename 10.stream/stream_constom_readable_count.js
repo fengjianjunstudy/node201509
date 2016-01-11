@@ -9,6 +9,7 @@ function Counter(opts){
     this._index=1;
 }
 Counter.prototype._read=function(){
+    console.log("eee")
     var i=this._index++;
     if(i>this._max){
         this.push(null)
@@ -19,6 +20,10 @@ Counter.prototype._read=function(){
     }
 }
 var counter=new Counter();
-counter.pipe(writer)
+//counter.pipe(writer)
+counter.on("readable",function(){
+    console.log("ff");
+    console.log(counter.read())
+})
 
 
