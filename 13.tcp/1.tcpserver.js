@@ -8,6 +8,9 @@ var server = net.createServer({allowHalfOpen:true},function(socket){
   server.getConnections(function(err,count){
       console.log(count);
   });
+    socket.on("connect",function(){
+        console.log("success")
+    })
     socket.on('error',function(err){
         console.log(err);
         socket.destroy();
@@ -22,9 +25,9 @@ server.on('error',function(err){
 });
 server.listen(8089,function(){
   console.log(util.inspect(server.address()));
-    setTimeout(function(){
+    /*setTimeout(function(){
         server.close();
-    },3000)
+    },3000)*/
 });
 server.on('close',function(err){
     console.log('服务器端正常关闭');

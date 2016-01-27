@@ -7,7 +7,7 @@ var app = express();
 app.use(function(req,res,next){
     //Cookie:name=zfpx; age=6; visited=1
     req.cookies = querystring.parse(req.headers.cookie,'; ','=');
-    req.cookie = cookie;
+    //req.cookie = cookie;
     next();
 });
 app.get('/', function (req, res) {
@@ -17,6 +17,7 @@ app.get('/', function (req, res) {
     if (req.cookies.visited) {
         res.send("欢迎老朋友");
     } else {
+        console.log(res.cookie)
         res.cookie('visited', 1, {httpOnly:true});
         res.send("欢迎新朋友");
     }
@@ -43,7 +44,10 @@ app.get('/b', function (req, res) {
 });
 app.listen(8080);
 //domain path  maxAge expires  httpOnly secure
+function cookie(){}
+/*
 function cookie(name,val,options){
+    console.log("cookie")
   var opt = options || {};
   var parts = [name+'='+val];
   if(null != opt.maxAge){
@@ -65,4 +69,4 @@ function cookie(name,val,options){
     parts.push('Secure');
 
     return parts.join('; ');
-}
+}*/

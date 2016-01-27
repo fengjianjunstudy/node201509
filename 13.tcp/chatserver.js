@@ -44,4 +44,4 @@ function broadcast(nickname,msg){
             clients[name].write(msg);
     }
 }
-server.listen(8088);
+server.listen(8188);

@@ -4,4 +4,6 @@ http.createServer(function (req, res) {
     var time = new Date(new Date().getTime() + 60 * 1000).toGMTString();
     res.setHeader('Set-Cookie',['name=zfpx; path=/;','age=6; path=/;'])
     res.end('hello');
-}).listen(8080);
+}).listen(8080,function(){
+    console.log("listening")
+});

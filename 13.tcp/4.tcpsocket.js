@@ -4,6 +4,9 @@ var fs = require('fs');
 //net.Socket 双工流 Duplux
 var ws = fs.createWriteStream('./socket.txt');
 var server = net.createServer({allowHalfOpen:true},function(socket){
+  socket.on("data",function(data){
+    console.log(data.toString())
+  })
   socket.setTimeout(10*1000);
   socket.on('timeout',function(){
     socket.resume();
